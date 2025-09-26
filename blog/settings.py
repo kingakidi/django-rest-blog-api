@@ -158,7 +158,7 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Django Blog API',
+    'TITLE': 'Blog API',
     'DESCRIPTION': 'A simple Blog Application API with JWT authentication, blog posts, comments, and likes',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,

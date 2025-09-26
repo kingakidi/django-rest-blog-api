@@ -20,7 +20,7 @@ def send_password_reset_otp(user, otp_code):
         <p>This OTP will expire in {getattr(settings, 'OTP_EXPIRY_MINUTES', 10)} minutes.</p>
         <p>If you did not request this password reset, please ignore this email.</p>
         <br>
-        <p>Best regards,<br>Django Blog API Team</p>
+        <p>Best regards,<br>Blog API Team</p>
     </body>
     </html>
     """
