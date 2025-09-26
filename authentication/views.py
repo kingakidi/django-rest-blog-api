@@ -16,6 +16,7 @@ from .utils import send_password_reset_otp
 
 
 class UserSignupView(APIView):
+    serializer_class = UserSignupSerializer
     @extend_schema(
         tags=['Auth'],
         summary="User Registration",
@@ -44,7 +45,15 @@ class UserSignupView(APIView):
                     }
                 }
             },
-            400: "Bad Request - Validation errors"
+            400: {
+                'type': 'object',
+                'properties': {
+                    'field_name': {
+                        'type': 'array',
+                        'items': {'type': 'string'}
+                    }
+                }
+            }
         }
     )
     def post(self, request):
@@ -66,6 +75,7 @@ class UserSignupView(APIView):
 
 
 class UserLoginView(APIView):
+    serializer_class = UserLoginSerializer
     @extend_schema(
         tags=['Auth'],
         summary="User Login",
@@ -94,7 +104,15 @@ class UserLoginView(APIView):
                     }
                 }
             },
-            400: "Bad Request - Invalid credentials"
+            400: {
+                'type': 'object',
+                'properties': {
+                    'non_field_errors': {
+                        'type': 'array',
+                        'items': {'type': 'string'}
+                    }
+                }
+            }
         }
     )
     def post(self, request):
@@ -116,6 +134,7 @@ class UserLoginView(APIView):
 
 
 class TokenRefreshView(APIView):
+    serializer_class = None
     @extend_schema(
         tags=['Auth'],
         summary="Refresh JWT Token",
@@ -162,6 +181,7 @@ class TokenRefreshView(APIView):
 
 
 class PasswordResetRequestView(APIView):
+    serializer_class = PasswordResetRequestSerializer
     @extend_schema(
         tags=['Auth'],
         summary="Request Password Reset",
@@ -201,6 +221,7 @@ class PasswordResetRequestView(APIView):
 
 
 class PasswordResetConfirmView(APIView):
+    serializer_class = PasswordResetConfirmSerializer
     @extend_schema(
         tags=['Auth'],
         summary="Confirm Password Reset",

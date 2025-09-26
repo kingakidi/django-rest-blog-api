@@ -13,6 +13,8 @@ urlpatterns = [
     path("api/docs/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
     path("api/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
     path(f"api/{API_VERSION}/auth/", include("authentication.urls")),
+    path(f"api/{API_VERSION}/posts/", include("posts.urls")),
+    path(f"api/{API_VERSION}/", include("comments.urls")),
 ]
 
 if settings.DEBUG:

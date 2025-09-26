@@ -45,8 +45,9 @@ INSTALLED_APPS = [
     "drf_spectacular",
     "corsheaders",
     "blog",
-    "authentication"
-    
+    "authentication",
+    "posts",
+    "comments"
 ]
 
 MIDDLEWARE = [
