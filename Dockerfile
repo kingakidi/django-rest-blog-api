@@ -41,11 +41,11 @@ USER appuser
 RUN mkdir -p /app/media
 
 # Expose port
-EXPOSE 8000
+EXPOSE 80
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
-    CMD python -c "import requests; requests.get('http://localhost:8000/api/schema/', timeout=10)"
+    CMD python -c "import requests; requests.get('http://localhost:80/api/schema/', timeout=10)"
 
 # Run startup script
 CMD ["/app/start.sh"]
